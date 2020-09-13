@@ -9,6 +9,10 @@ FINAL=$DIR/ranks.txt
 
 rm -rf $DIR; mkdir $DIR
 
+go build PrepReducer.go
+go build RankMapper.go
+go build RankReducer.go
+
 cat $INPUT1 |sort -t$'\t' -k 1,1 |./PrepReducer > $OUTPUT1
 TOTAL=$(cat $OUTPUT1|wc -l | sed 's/^ *//')
 echo "There are $TOTAL points"
